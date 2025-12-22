@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:15
+    container_name: db15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: postgres
+    restart: always # se inicia como servicio
+    volumes:
+      - db15-data:/var/lib/postgresql/data
+    networks:
+      - odoo-net2
+
+  odoo17:
+    image: odoo:17
+    container_name: odoo17
+    depends_on:
+      - db
+    environment:
+      HOST: db
+      USER: admin
+      PASSWORD: admin
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo17-data:/var/lib/odoo #Directorio de datos
+      - ./config_odoo:/etc/odoo
+      - ./custom-addons:/mnt/extra-addons
+      - ./logs:/var/log/odoo
+    networks:
+      - odoo-net2
+
+volumes:
+  db15-data:
+  odoo17-data:
+
+
+networks:
+  odoo-net2:
+
+

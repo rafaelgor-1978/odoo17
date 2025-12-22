@@ -1,0 +1,28 @@
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*py[cod] 
+*$py.class
+*.so 
+.Python
+*.egg-info/ 
+# Odoo
+filestore/
+sessions/
+*.log
+# Configuración de VS Code / IDE
+.vscode/ 
+.idea/
+# Archivos temporales de editores
+*.swp 
+*.swo 
+# macOS
+.DS_Store 
+# Windows
+Thumbs.db 
+# Docker y entornos virtuales
+venv/ 
+env/
+# Directorios para backup de archivos y base de datos
+copias/
+
